@@ -7,7 +7,7 @@ public class GUISummonorDetail extends JFrame{
 
     private int screenWidth;
     private int screenHeight;
-    JPanel pnl;
+
     JLabel lblSummonorName;
 
     private void getScreenSize(){
@@ -24,14 +24,17 @@ public class GUISummonorDetail extends JFrame{
         setLayout(new BorderLayout());
         setVisible(true);
 
-        pnl = new JPanel();
+        JPanel pnlName = new JPanel();
         JLabel lblName = new JLabel("Summonor name: ");
         lblSummonorName = new JLabel(object.getString("name"));
 
-        pnl.add(lblName);
-        pnl.add(lblSummonorName);
+        pnlName.add(lblName);
+        pnlName.add(lblSummonorName);
+        pnlName.add(new JLabel(Long.toString((object.getLong("summonerLevel")))));
 
-        add(pnl);
+        System.out.println(object);
+
+        add(pnlName);
 
     }
 

@@ -5,12 +5,12 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
 
-public class GetSummonor {
-        String apikey = "RGAPI-cf1cbc36-3973-48c1-bc65-06247adaba2e";
+public class SummonorGetter {
+        String apikey = "RGAPI-a588dba3-8907-4cd6-9982-65223e4fac43";
         String baseURL;
         JSONObject obj;
 
-        public GetSummonor() {}
+        public SummonorGetter() {}
 
     private String parseSummonorName(String name){
             if(name.contains(" ")){
@@ -19,7 +19,7 @@ public class GetSummonor {
             return name;
         }
 
-        public void getName(String name) {
+        public JSONObject getSummonorByName(String name) {
             try {
                 name = parseSummonorName(name);
                 baseURL = "https://oc1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + name + "?api_key="+apikey;
@@ -34,14 +34,17 @@ public class GetSummonor {
                     sb.append(sc.nextLine());
                 }
                 obj = new JSONObject(sb.toString());
-
+                return obj;
 
 
             } catch (Exception e) {
                 System.out.println("Something went wrong");
                 System.out.println(e.getMessage());
             }
+            return null;
         }
+
+
 
 
 }
